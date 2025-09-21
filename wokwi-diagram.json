@@ -1,0 +1,42 @@
+{
+    "version": 1,
+    "author": "Uri Shaked",
+    "editor": "wokwi",
+    "parts": [
+      { "type": "wokwi-arduino-uno", "id": "uno", "top": 39, "left": -154.2, "attrs": {} },
+      { "type": "wokwi-a4988", "id": "drv1", "top": 91.4, "left": 226, "rotate": 270, "attrs": {} },
+      {
+        "type": "wokwi-stepper-motor",
+        "id": "stepper1",
+        "top": -206.69,
+        "left": 144.88,
+        "attrs": { "arrow": "orange" }
+      },
+      { "type": "wokwi-ds1307", "id": "rtc1", "top": 263.4, "left": 153.7, "attrs": {} },
+      {
+        "type": "wokwi-buzzer",
+        "id": "bz1",
+        "top": -55.2,
+        "left": -17.4,
+        "attrs": { "volume": "0.1" }
+      }
+    ],
+    "connections": [
+      [ "drv1:1B", "stepper1:B-", "black", [ "v0" ] ],
+      [ "drv1:1A", "stepper1:B+", "green", [ "v0" ] ],
+      [ "stepper1:A+", "drv1:2A", "blue", [ "v0" ] ],
+      [ "stepper1:A-", "drv1:2B", "red", [ "v0" ] ],
+      [ "drv1:SLEEP", "drv1:RESET", "green", [ "v15.92", "h-9.9" ] ],
+      [ "drv1:STEP", "uno:3", "green", [ "v38.4", "h-134.4", "v-134.4", "h-57.6" ] ],
+      [ "drv1:DIR", "uno:4", "green", [ "v57.6", "h-134.4", "v-172.8", "h-86.4" ] ],
+      [ "drv1:VMOT", "uno:VIN", "red", [ "v-19.35", "h-134.32", "v0", "h-52.1" ] ],
+      [ "drv1:GND.2", "uno:GND.3", "black", [ "v-38.55", "h-201.52", "v163.3" ] ],
+      [ "rtc1:5V", "uno:VIN", "red", [ "h0" ] ],
+      [ "rtc1:GND", "uno:GND.3", "black", [ "h0" ] ],
+      [ "rtc1:SDA", "uno:A4", "green", [ "h0" ] ],
+      [ "rtc1:SCL", "uno:A5", "orange", [ "h0" ] ],
+      [ "bz1:2", "uno:8", "green", [ "v0" ] ],
+      [ "bz1:1", "uno:GND.2", "black", [ "v0" ] ]
+    ],
+    "dependencies": {}
+  }
